@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git credentialsId: '0506e542-582e-411e-97bc-24e3791bb711', url: 'https://github.com/samgithubadmin/spring-petclinic.git'
+                git credentialsId: '39250bc3-383c-41b3-b43b-9c9ed9040c27', url: 'https://github.com/samgithubadmin/spring-petclinic.git'
             }
         }
         stage('Build') {
@@ -18,7 +18,7 @@ pipeline {
         }
         stage('s3 bucket') {
             steps {
-                s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'devenv12', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-2', showDirectlyInBrowser: false, sourceFile: '*/**.jar', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 's3bucket', userMetadata: []
+                s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'sams3bucket1', excludedFile: '3', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-2', showDirectlyInBrowser: false, sourceFile: '*/**.jar', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'bucket', userMetadata: []
             }
         }
     }}
